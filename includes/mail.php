@@ -138,8 +138,15 @@ function send_mail(string $toEmail, string $toName, string $subject, string $tex
     }
     error_log(sprintf('mail: %s answered HTTP %d: %s', $c['provider'], $code, mb_substr((string) $body, 0, 300)));
 
-    return sprintf('The e-mail service refused the message (HTTP %d)%s',
-        $code, $detail !== '' ? ': ' . mb_substr($detail, 0, 160) : '.');
+    $hint = '';
+    if ($code === 401 || $code === 403) {
+        // The two commonest causes, neither of which the provider's own message makes obvious.
+        $hint = ' Check that DISINFENTRY_MAIL_API_KEY on this server is the full, current key'
+              . ' (no quotes or spaces) and, for Brevo, that its authorised-IP blocking is off.';
+    }
+
+    return sprintf('The e-mail service refused the message (HTTP %d)%s%s',
+        $code, $detail !== '' ? ': ' . mb_substr($detail, 0, 160) : '.', $hint);
 }
 
 /**
