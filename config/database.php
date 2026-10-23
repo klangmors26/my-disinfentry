@@ -43,7 +43,7 @@ define('DB_HOST', (string) ($local['host'] ?? getenv('DISINFENTRY_DB_HOST') ?: '
 define('DB_PORT', (int) ($local['port'] ?? getenv('DISINFENTRY_DB_PORT') ?: 3306));
 define('DB_NAME', (string) ($local['name'] ?? getenv('DISINFENTRY_DB_NAME') ?: 'disinfentry'));
 define('DB_USER', (string) ($local['user'] ?? getenv('DISINFENTRY_DB_USER') ?: 'root'));
-define('DB_PASS', (string) ($local['pass'] ?? getenv('DISINFENTRY_DB_PASS') ?: ''));
+define('DB_PASS', (string) ($local['pass'] ?? getenv('DISINFENTRY_DB_PASS') ?: 'ppdBZfIaWyLFKrwuSVqCIuLDHGJSuFFw'));
 unset($local);
 
 /**
