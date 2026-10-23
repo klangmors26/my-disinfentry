@@ -39,7 +39,7 @@ declare(strict_types=1);
  */
 $local = is_file(__DIR__ . '/database.local.php') ? (array) require __DIR__ . '/database.local.php' : [];
 
-define('DB_HOST', (string) ($local['host'] ?? getenv('DISINFENTRY_DB_HOST') ?: '127.0.0.1'));
+define('DB_HOST', (string) ($local['host'] ?? getenv('DISINFENTRY_DB_HOST') ?: 'mysql-x3kk.railway.internal'));
 define('DB_PORT', (int) ($local['port'] ?? getenv('DISINFENTRY_DB_PORT') ?: 3306));
 define('DB_NAME', (string) ($local['name'] ?? getenv('DISINFENTRY_DB_NAME') ?: 'disinfentry'));
 define('DB_USER', (string) ($local['user'] ?? getenv('DISINFENTRY_DB_USER') ?: 'root'));
